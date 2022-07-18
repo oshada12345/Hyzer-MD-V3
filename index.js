@@ -2,21 +2,9 @@ console.log('Starting...')
 let cluster = require('cluster')
 let path = require('path')
 let fs = require('fs')
-let package = require('./package.json')
-const CFonts = require('cfonts')
 const Readline = require('readline')
 const yargs = require('yargs/yargs')
 const rl = Readline.createInterface(process.stdin, process.stdout)
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-
-CFonts.say('BOT BY\n HYZER', {
-  colors: ['blueBright','yellowBright'],                                        font: 'block',
-  align: 'center',
-})
-CFonts.say(`BY HYZER OFFICIAL`, {                                            
-colors: ['yellow'],                                                           
-font: 'console',                                                              align: 'center',
-})
 
 var isRunning = false
 /**
@@ -27,11 +15,7 @@ function start(file) {
   if (isRunning) return
   isRunning = true
   let args = [path.join(__dirname, file), ...process.argv.slice(2)]
-  CFonts.say([process.argv[0], ...args].join(' '), {
-    font: 'console',
-    align: 'center',
-    gradient: ['red', 'magenta']
-  })
+
   cluster.setupMaster({
     exec: path.join(__dirname, file),
     args: args.slice(1),
@@ -67,4 +51,5 @@ function start(file) {
   // console.log(p)
 }
 
-start('main.js')
+
+start('Millie.js')
